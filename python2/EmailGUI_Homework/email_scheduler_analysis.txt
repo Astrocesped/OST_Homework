@@ -1,0 +1,103 @@
+Email Scheduler Analysis
+2015 August 5th
+
+Number of emails per set (or day in DAYCOUNT) = 2
+
+According to the measurements found below, the fastest times were achieved
+in the third run; they seem to be rare, compared to the most common pair of
+obtained values, one of them considerably taking more time at the start, but
+reports get closer to the average as the number of DAYCOUNT increases.
+
+The average time required to connect to the database and create a new table
+under the class implementation from the module is around .0904 seconds. The
+slowest records take almost 170% more time than the fastest record, of .015
+seconds. This can be seen as a fixed cost of .10 seconds.
+
+Inserting one set of emails (DAYCOUNT=1) takes .015 secs in average, with the
+slowest records from the previous step also taking the double of that time.
+
+Subsequent DAYCOUNT values are all faster than their expected time, which is
+the result of multiplying the time taken to insert 1 DAYCOUNT set by the
+new value of DAYCOUNT. By the value of 50, all of the instances become close
+together, at half a second. Most notably, the 500 DAYCOUNT set finds all of the
+processes close to 5 seconds, beating the highest predicted values from the
+instances with the slowest start by almost 10 seconds.
+
+The relationship between the DAYCOUNT increments in each set is linear, once
+the value of DAYCOUNT reaches 50; before that, the values are mostly linear, but
+seem to behave as exponential at random, when comparing the avg_time of each
+instance and the DAYCOUNT value of 10.
+
+The marginal cost for each day remains at an approximate constant of .01035
+seconds between all of the DAYCOUNT increments from 50 on, a reduction from
+the average of 0.0109 seconds for the value of 10.
+
+------------------------------------------------
+    TIME MEASUREMENTS (Five tests in total)
+------------------------------------------------
+
+#1. Time required to create the table: 0.18737387657165527
+#2. Time required to create the table: 0.031201839447021484
+#3. Time required to create the table: 0.015583992004394531
+#4. Time required to create the table: 0.03116917610168457
+#5. Time required to create the table: 0.1871950626373291
+
+------------------------
+
+#1. Average time for DAYCOUNT 1: 0.031229019165039062
+#2. Average time for DAYCOUNT 1: 0.015601158142089844 
+#3. Average time for DAYCOUNT 1: 0.015585184097290039
+#4. Average time for DAYCOUNT 1: 0.015583992004394531
+#5. Average time for DAYCOUNT 1: 0.031198978424072266 
+
+------------------------
+
+#1. Expected time for DAYCOUNT 10 is: 0.3122901916503906
+#1. Real time for DAYCOUNT 10 is: 0.07807207107543945
+#2. Expected time for DAYCOUNT 10 is: 0.15601158142089844
+#2. Real time for DAYCOUNT 10 is: 0.10920596122741699
+#3. Expected time for DAYCOUNT 10 is: 0.1558518409729004
+#3. Real time for DAYCOUNT 10 is: 0.10909080505371094
+#4. Expected time for DAYCOUNT 10 is: 0.1558399200439453
+#4. Real time for DAYCOUNT 10 is: 0.10909199714660645
+#5. Expected time for DAYCOUNT 10 is: 0.31198978424072266
+#5. Real time for DAYCOUNT 10 is: 0.10919809341430664
+
+------------------------
+
+#1. Expected time for DAYCOUNT 50 is: 1.5614509582519531
+#1. Real time for DAYCOUNT 50 is: 0.4996640682220459
+#2. Expected time for DAYCOUNT 50 is: 0.7800579071044922
+#2. Real time for DAYCOUNT 50 is: 0.5148298740386963
+#3. Expected time for DAYCOUNT 50 is: 0.779259204864502
+#3. Real time for DAYCOUNT 50 is: 0.5298731327056885 
+#4. Expected time for DAYCOUNT 50 is: 0.7791996002197266
+#4. Real time for DAYCOUNT 50 is: 0.5142879486083984
+#5. Expected time for DAYCOUNT 50 is: 1.5599489212036133
+#5. Real time for DAYCOUNT 50 is: 0.49918699264526367
+
+------------------------
+
+#1. Expected time for DAYCOUNT 100 is: 3.1229019165039062
+#1. Real time for DAYCOUNT 100 is: 1.015944004058838
+#2. Expected time for DAYCOUNT 100 is: 1.5601158142089844
+#2. Real time for DAYCOUNT 100 is: 1.045259952545166
+#3. Expected time for DAYCOUNT 100 is: 1.558518409729004
+#3. Real time for DAYCOUNT 100 is: 0.9818239212036133
+#4. Expected time for DAYCOUNT 100 is: 1.5583992004394531
+#4. Real time for DAYCOUNT 100 is: 0.9974079132080078
+#5. Expected time for DAYCOUNT 100 is: 3.1198978424072266
+#5. Real time for DAYCOUNT 100 is: 1.0305728912353516
+
+------------------------
+
+#1. Expected time for DAYCOUNT 500 is: 15.614509582519531
+#1. Real time for DAYCOUNT 500 is: 5.060098886489868
+#2. Expected time for DAYCOUNT 500 is: 7.800579071044922
+#2. Real time for DAYCOUNT 500 is: 5.180499076843262
+#3. Expected time for DAYCOUNT 500 is: 7.7925920486450195
+#3. Real time for DAYCOUNT 500 is: 4.972454071044922
+#4. Expected time for DAYCOUNT 500 is: 7.791996002197266
+#4. Real time for DAYCOUNT 500 is: 5.081546068191528
+#5. Expected time for DAYCOUNT 500 is: 15.599489212036133
+#5. Real time for DAYCOUNT 500 is: 5.102070093154907 
