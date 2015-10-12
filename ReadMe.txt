@@ -1,5 +1,5 @@
 These folders contain the projects that correspond to each lesson in the now
-deceased School of Technology from O'Reilly. I offer them as samples of code
+dismantled School of Technology from O'Reilly. I offer them as samples of code
 for others to learn and as a display of my journey as a Python developer.
 
 You'll notice some evolution in certain practices while going from the first
